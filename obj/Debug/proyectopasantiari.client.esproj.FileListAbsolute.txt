@@ -1,0 +1,2 @@
+C:\Users\anbelen\source\repos\ProyectoPasantiaRI\proyectopasantiari.client\obj\Debug\proyectopasantiari.client.esproj.CoreCompileInputs.cache
+C:\Users\anbelen\source\repos\ProyectoPasantiaRI\obj\Debug\proyectopasantiari.client.esproj.CoreCompileInputs.cache

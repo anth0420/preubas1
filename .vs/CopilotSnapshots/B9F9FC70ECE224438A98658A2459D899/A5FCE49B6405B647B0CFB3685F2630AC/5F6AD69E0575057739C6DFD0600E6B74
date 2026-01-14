@@ -1,0 +1,15 @@
+﻿
+import ExencionPasantia from './components/ExencionPasantia.jsx'
+
+
+function App() {
+
+  return (
+    
+      <div>
+      <ExencionPasantia /> 
+      </div>
+  )
+}
+
+export default App

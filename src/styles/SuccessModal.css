@@ -1,0 +1,54 @@
+.success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.success-modal {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 6px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 3px solid #1fbf75;
+    color: #1fbf75;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.success-button {
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    .success-button:hover {
+        background: #0b5ed7;
+    }
