@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|c:\\users\\anbelen\\source\\repos\\proyectopasantiari\\proyectopasantiari.server\\services\\solicitudemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|solutionrelative:proyectopasantiari.server\\services\\solicitudemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|c:\\users\\anbelen\\source\\repos\\proyectopasantiari\\proyectopasantiari.server\\controllers\\solicitudcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|solutionrelative:proyectopasantiari.server\\controllers\\solicitudcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|c:\\users\\anbelen\\source\\repos\\proyectopasantiari\\proyectopasantiari.server\\services\\solicitudservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|solutionrelative:proyectopasantiari.server\\services\\solicitudservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|c:\\users\\anbelen\\source\\repos\\proyectopasantiari\\proyectopasantiari.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|solutionrelative:proyectopasantiari.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|c:\\users\\anbelen\\source\\repos\\proyectopasantiari\\proyectopasantiari.server\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|solutionrelative:proyectopasantiari.server\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|c:\\users\\anbelen\\source\\repos\\proyectopasantiari\\proyectopasantiari.server\\controllers\\personacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBC02C91-1B06-BAAE-B13F-A42384FDD522}|ProyectoPasantiaRI.Server\\ProyectoPasantiaRI.Server.csproj|solutionrelative:proyectopasantiari.server\\controllers\\personacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +43,79 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Program.cs",
+              "RelativeDocumentMoniker": "ProyectoPasantiaRI.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Program.cs",
+              "RelativeToolTip": "ProyectoPasantiaRI.Server\\Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:36:35.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SolicitudService.cs",
+              "DocumentMoniker": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Services\\SolicitudService.cs",
+              "RelativeDocumentMoniker": "ProyectoPasantiaRI.Server\\Services\\SolicitudService.cs",
+              "ToolTip": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Services\\SolicitudService.cs",
+              "RelativeToolTip": "ProyectoPasantiaRI.Server\\Services\\SolicitudService.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAwwJwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:24:06.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SolicitudEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Services\\SolicitudEmailService.cs",
+              "RelativeDocumentMoniker": "ProyectoPasantiaRI.Server\\Services\\SolicitudEmailService.cs",
+              "ToolTip": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Services\\SolicitudEmailService.cs",
+              "RelativeToolTip": "ProyectoPasantiaRI.Server\\Services\\SolicitudEmailService.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAAMEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:24:00.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "ProyectoPasantiaRI.Server\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Services\\EmailService.cs",
+              "RelativeToolTip": "ProyectoPasantiaRI.Server\\Services\\EmailService.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAADwv0sAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:23:55.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SolicitudController.cs",
+              "DocumentMoniker": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Controllers\\SolicitudController.cs",
+              "RelativeDocumentMoniker": "ProyectoPasantiaRI.Server\\Controllers\\SolicitudController.cs",
+              "ToolTip": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Controllers\\SolicitudController.cs",
+              "RelativeToolTip": "ProyectoPasantiaRI.Server\\Controllers\\SolicitudController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAADgv0gAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:23:43.982Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PersonaController.cs",
+              "DocumentMoniker": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Controllers\\PersonaController.cs",
+              "RelativeDocumentMoniker": "ProyectoPasantiaRI.Server\\Controllers\\PersonaController.cs",
+              "ToolTip": "C:\\Users\\anbelen\\source\\repos\\ProyectoPasantiaRI\\ProyectoPasantiaRI.Server\\Controllers\\PersonaController.cs",
+              "RelativeToolTip": "ProyectoPasantiaRI.Server\\Controllers\\PersonaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:23:43.206Z"
             }
           ]
         }
