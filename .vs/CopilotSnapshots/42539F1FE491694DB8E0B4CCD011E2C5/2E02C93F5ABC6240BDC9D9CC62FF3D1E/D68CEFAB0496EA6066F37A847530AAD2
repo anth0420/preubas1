@@ -1,0 +1,165 @@
+﻿import { useState } from "react";
+import "../styles/ConsultarSolicitud.css";
+import logo from "../assets/logo.png";
+
+const API_URL = "http://localhost:5195";
+
+const ConsultarSolicitud = ({ onClose }) => {
+    const [numeroSolicitud, setNumeroSolicitud] = useState("");
+    const [solicitud, setSolicitud] = useState(null);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const buscarSolicitud = async () => {
+        if (!numeroSolicitud.trim()) {
+            setError("Por favor ingresa un número de solicitud.");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+        setSolicitud(null);
+
+        try {
+            const response = await fetch(
+                `${API_URL}/api/Solicitudes/${numeroSolicitud}`
+            );
+
+            if (!response.ok) {
+                throw new Error("Solicitud no encontrada");
+            }
+
+            const data = await response.json();
+            setSolicitud(data);
+        } catch (err) {
+            setError(err.message || "Error al buscar la solicitud.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const descargarArchivo = (archivoId) => {
+        window.open(
+            `${API_URL}/api/Solicitudes/archivo/${archivoId}`,
+            "_blank"
+        );
+    };
+
+    return (
+        <div className="modal-overlay">
+            <div className="consulta-container">
+                <div className="consulta-header">
+                    <img src={logo} alt="Registro Inmobiliario" className="consulta-logo" />
+                </div>
+
+                <h2 className="consulta-title">Verificar solicitud</h2>
+
+                {/* Buscar */}
+                <div className="form-group-consulta">
+                    <label>Número de solicitud</label>
+                    <div className="input-search-container">
+                        <input
+                            type="text"
+                            value={numeroSolicitud}
+                            onChange={(e) => setNumeroSolicitud(e.target.value)}
+                            className="input-consulta"
+                            disabled={loading}
+                        />
+                        <button
+                            onClick={buscarSolicitud}
+                            className="btn-buscar"
+                            disabled={loading}
+                        >
+                            🔍
+                        </button>
+
+
+                    </div>
+                </div>
+
+                {error && <div className="error-message-consulta">{error}</div>}
+
+                {/* Resultado */}
+                {solicitud && (
+                    <>
+                        <div className="form-group-consulta">
+                            <label>Nombre</label>
+                            <input readOnly value={solicitud.nombre} className="input-consulta" />
+                        </div>
+
+                        <div className="form-group-consulta">
+                            <label>Correo</label>
+                            <input readOnly value={solicitud.correo} className="input-consulta" />
+                        </div>
+
+                        {/* Documento actual */}
+                        <div className="form-group-consulta">
+                            <label>Documento actual</label>
+
+                            {solicitud.archivosActuales.length > 0 ? (
+                                <div className="tabla-documentos">
+                                    <div className="tabla-row">
+                                        <div className="tabla-col documento-nombre">
+                                            {solicitud.archivosActuales[0].nombreOriginal}
+                                        </div>
+                                        <div className="tabla-col">
+                                            <button
+                                                className="btn-buscar"
+                                                onClick={() =>
+                                                    descargarArchivo(
+                                                        solicitud.archivosActuales[0].id
+                                                    )
+                                                }
+                                            >
+                                                📥 Descargar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="no-historial">
+                                    No hay documento actual
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Historial */}
+                        <div className="historial-section">
+                            <h3>Historial de versiones</h3>
+
+                            {solicitud.historialArchivos.length > 0 ? (
+                                <div className="tabla-historial">
+                                    {solicitud.historialArchivos.map((item) => (
+                                        <div key={item.id} className="tabla-row-historial">
+                                            <div className="tabla-col-historial">
+                                                {item.nombreOriginal}
+                                            </div>
+                                            <div className="tabla-col-historial">
+                                                <button
+                                                    className="btn-buscar"
+                                                    onClick={() => descargarArchivo(item.id)}
+                                                >
+                                                    📥 Descargar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="no-historial">
+                                    No hay versiones anteriores
+                                </div>
+                            )}
+                        </div>
+                    </>
+                )}
+
+                <button onClick={onClose} className="btn-aceptar">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default ConsultarSolicitud;

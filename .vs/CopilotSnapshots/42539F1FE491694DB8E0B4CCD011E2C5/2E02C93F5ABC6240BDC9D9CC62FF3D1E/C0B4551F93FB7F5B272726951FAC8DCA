@@ -1,0 +1,127 @@
+﻿import { useState } from "react";
+import "../styles/ConsultarSolicitud.css";
+import logo from "../assets/logo.png";
+
+const API_URL = "http://localhost:5195";
+
+const ConsultarSolicitud = ({ onClose }) => {
+    const [numeroSolicitud, setNumeroSolicitud] = useState("");
+    const [solicitud, setSolicitud] = useState(null);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const buscarSolicitud = async () => {
+        if (!numeroSolicitud.trim()) {
+            setError("Por favor ingresa un número de solicitud.");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+        setSolicitud(null);
+
+        try {
+            const response = await fetch(
+                `${API_URL}/api/Solicitudes/${numeroSolicitud}`
+            );
+
+            if (!response.ok) {
+                throw new Error("Solicitud no encontrada");
+            }
+
+            const data = await response.json();
+            setSolicitud(data);
+        } catch (err) {
+            setError(err.message || "Error al buscar la solicitud.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            buscarSolicitud();
+        }
+    };
+
+    return (
+        <div className="modal-overlay">
+            <div className="consulta-container">
+                <div className="consulta-header">
+                    <img src={logo} alt="Registro Inmobiliario" className="consulta-logo" />
+                </div>
+
+                <h2 className="consulta-title">Verificar estatus de solicitud</h2>
+
+                {error && <div className="error-message-consulta">{error}</div>}
+
+                {/* Buscar */}
+                <div className="form-group-consulta">
+                    <label>Número de solicitud</label>
+                    <div className="input-search-container">
+                        <input
+                            type="text"
+                            value={numeroSolicitud}
+                            onChange={(e) => setNumeroSolicitud(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                            className="input-consulta"
+                            disabled={loading}
+                            placeholder=" "
+                        />
+                        <button
+                            onClick={buscarSolicitud}
+                            className="btn-buscar"
+                            disabled={loading}
+                        >
+                            🔍
+                        </button>
+                    </div>
+                </div>
+
+                {/* Resultado */}
+                {solicitud && (
+                    <>
+                        <div className="form-group-consulta">
+                            <label>Nombre completo</label>
+                            <input
+                                type="text"
+                                readOnly
+                                value={solicitud.nombre || ""}
+                                className="input-consulta"
+                                placeholder=" "
+                            />
+                        </div>
+
+                        <div className="form-group-consulta">
+                            <label>Correo electrónico</label>
+                            <input
+                                type="text"
+                                readOnly
+                                value={solicitud.correo || ""}
+                                className="input-consulta"
+                                placeholder=" "
+                            />
+                        </div>
+
+                        <div className="form-group-consulta">
+                            <label>Estado</label>
+                            <input
+                                type="text"
+                                readOnly
+                                value={solicitud.estado || ""}
+                                className="input-consulta"
+                                placeholder=" "
+                            />
+                        </div>
+                    </>
+                )}
+
+                <button onClick={onClose} className="btn-aceptar">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default ConsultarSolicitud;
