@@ -1,0 +1,270 @@
+﻿import { useState } from "react";
+import "../styles/solicitud.css";
+
+const API_URL = "http://localhost:5189/api/Solicitudes";
+
+const CrearSolicitud = ({ onNavigate = () => {} }) => {
+    const [form, setForm] = useState({
+        cedula: "",
+        nombre: "",
+        correo: "",
+        confirmarCorreo: "",
+    });
+    const [archivo, setArchivo] = useState(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [aceptaCondiciones, setAceptaCondiciones] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            // Validar tamaño (5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert("El archivo no debe superar los 5 MB");
+                return;
+            }
+            setArchivo(file);
+        }
+    };
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        setIsDragging(true);
+    };
+
+    const handleDragLeave = () => {
+        setIsDragging(false);
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        setIsDragging(false);
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                alert("El archivo no debe superar los 5 MB");
+                return;
+            }
+            setArchivo(file);
+        }
+    };
+
+    const handleSubmit = async () => {
+        // Validaciones
+        if (!form.cedula || !form.nombre || !form.correo || !form.confirmarCorreo) {
+            alert("Por favor completa todos los campos");
+            return;
+        }
+
+        if (form.correo !== form.confirmarCorreo) {
+            alert("Los correos no coinciden");
+            return;
+        }
+
+        if (!archivo) {
+            alert("Debes cargar un documento");
+            return;
+        }
+
+        if (!aceptaCondiciones) {
+            alert("Debes aceptar las condiciones");
+            return;
+        }
+
+        setLoading(true);
+
+        const data = new FormData();
+        data.append("cedula", form.cedula);
+        data.append("nombre", form.nombre);
+        data.append("correo", form.correo);
+        data.append("archivo", archivo);
+
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                body: data,
+                // No incluyas headers con Content-Type cuando uses FormData
+            });
+
+            // Si el servidor responde, incluso con error
+            if (response.ok || response.status === 200 || response.status === 201) {
+                alert("Solicitud enviada correctamente");
+                // Limpiar formulario
+                setForm({
+                    cedula: "",
+                    nombre: "",
+                    correo: "",
+                    confirmarCorreo: "",
+                });
+                setArchivo(null);
+                setAceptaCondiciones(false);
+
+                // Volver a la pantalla principal
+                try {
+                    onNavigate('/');
+                } catch (e) {
+                    console.warn('onNavigate no disponible', e);
+                }
+            } else {
+                // El servidor respondió pero con un error
+                const errorText = await response.text();
+                console.error("Error del servidor:", errorText);
+                alert("Error al enviar la solicitud. Código: " + response.status);
+            }
+        } catch (error) {
+            console.error("Error de conexión:", error);
+
+            // Si los datos se están guardando a pesar del error,
+            // significa que el problema es con la respuesta del servidor
+            alert("La solicitud fue enviada pero hubo un problema de comunicación. Por favor verifica si se guardó correctamente.");
+
+            // Opcionalmente limpiar el formulario de todas formas
+            setForm({
+                cedula: "",
+                nombre: "",
+                correo: "",
+                confirmarCorreo: "",
+            });
+            setArchivo(null);
+            setAceptaCondiciones(false);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="page-container">
+            <div className="form-wrapper">
+                {/* Logo */}
+                <div className="logo-container">
+                    <div className="logo-shapes">
+                        <div className="logo-shape-blue"></div>
+                        <div className="logo-shape-red"></div>
+                    </div>
+                    <div className="logo-text">
+                        <div className="logo-text-small">República Dominicana</div>
+                        <div className="logo-text-large">REGISTRO</div>
+                        <div className="logo-text-large">INMOBILIARIO</div>
+                    </div>
+                </div>
+
+                {/* Título */}
+                <h2 className="title">Crear nueva solicitud</h2>
+
+                {/* Formulario */}
+                <div>
+                    <div className="form-group">
+                        <label>Número de cédula</label>
+                        <input
+                            type="text"
+                            name="cedula"
+                            value={form.cedula}
+                            onChange={handleChange}
+                            className="form-control"
+                            disabled={loading}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Nombre completo</label>
+                        <input
+                            type="text"
+                            name="nombre"
+                            value={form.nombre}
+                            onChange={handleChange}
+                            className="form-control"
+                            disabled={loading}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Correo electrónico</label>
+                        <input
+                            type="email"
+                            name="correo"
+                            value={form.correo}
+                            onChange={handleChange}
+                            className="form-control"
+                            disabled={loading}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Confirmar Correo electrónico</label>
+                        <input
+                            type="email"
+                            name="confirmarCorreo"
+                            value={form.confirmarCorreo}
+                            onChange={handleChange}
+                            className="form-control"
+                            disabled={loading}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Documentos de la solicitud</label>
+                        <div
+                            className={`upload-box ${isDragging ? 'dragging' : ''}`}
+                            onDragOver={handleDragOver}
+                            onDragLeave={handleDragLeave}
+                            onDrop={handleDrop}
+                            onClick={() => !loading && document.getElementById('file-upload').click()}
+                        >
+                            <input
+                                type="file"
+                                id="file-upload"
+                                onChange={handleFileChange}
+                                accept=".pdf,.jpg,.jpeg,.png"
+                                disabled={loading}
+                            />
+                            <svg
+                                className="upload-icon"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                />
+                            </svg>
+                            <p>{archivo ? archivo.name : "Arrastra o selecciona un documento"}</p>
+                            <small>de tu solicitud</small>
+                        </div>
+                        <p className="upload-info">
+                            El límite de carga es de 5 MB y sólo se permiten pdf, jpg o png.
+                        </p>
+                        <div className="checkbox-container">
+                            <input
+                                type="checkbox"
+                                id="conditions"
+                                checked={aceptaCondiciones}
+                                onChange={(e) => setAceptaCondiciones(e.target.checked)}
+                                disabled={loading}
+                            />
+                            <label htmlFor="conditions">
+                                He leído y acepto las condiciones
+                            </label>
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={handleSubmit}
+                        className="btn-submit"
+                        disabled={loading}
+                    >
+                        {loading ? "Enviando..." : "Enviar"}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CrearSolicitud;

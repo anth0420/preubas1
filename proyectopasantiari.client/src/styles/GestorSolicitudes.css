@@ -1,0 +1,309 @@
+/* =========================
+   GESTOR DE SOLICITUDES
+   Página administrativa
+========================= */
+
+.gestor-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    padding: 40px 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+.gestor-header {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gestor-logo {
+    height: 60px;
+}
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+.gestor-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gestor-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* =========================
+   TABS
+========================= */
+.gestor-tabs {
+    display: flex;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.gestor-tab {
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+    .gestor-tab.active {
+        color: #0052CC;
+        border-bottom-color: #0052CC;
+    }
+
+    .gestor-tab:hover {
+        color: #0052CC;
+    }
+
+/* =========================
+   BUSCADOR
+========================= */
+.gestor-search {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+    .search-input:focus {
+        outline: none;
+        border-color: #0052CC;
+        box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+    }
+
+.clear-search {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+    .clear-search:hover {
+        background: #f3f4f6;
+        color: #111827;
+    }
+
+/* =========================
+   TABLA
+========================= */
+.gestor-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.gestor-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+    .gestor-table thead {
+        background: #0052CC;
+        color: white;
+    }
+
+    .gestor-table th {
+        padding: 14px 16px;
+        text-align: left;
+        cursor: pointer;
+        user-select: none;
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+        .gestor-table th.no-sort {
+            cursor: default;
+            text-align: center;
+        }
+
+    .gestor-table td {
+        padding: 14px 16px;
+        color: #2c3e50;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .gestor-table tr.row-even {
+        background: white;
+    }
+
+    .gestor-table tr.row-odd {
+        background: #fafbfc;
+    }
+
+/* =========================
+   ICONOS DE ORDENAMIENTO
+========================= */
+.sort-icon {
+    margin-left: 4px;
+    font-size: 11px;
+    display: inline-block;
+}
+
+    .sort-icon.inactive {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .sort-icon.active {
+        color: white;
+    }
+
+/* =========================
+   ACCIONES
+========================= */
+.action-cell {
+    text-align: center;
+}
+
+.btn-action {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #0052CC;
+    font-size: 18px;
+    padding: 4px 8px;
+    transition: transform 0.2s;
+}
+
+    .btn-action:hover {
+        transform: scale(1.2);
+    }
+
+.action-disabled {
+    color: #cbd5e0;
+    font-size: 16px;
+}
+
+/* =========================
+   MENSAJES
+========================= */
+.gestor-loading,
+.gestor-empty {
+    text-align: center;
+    padding: 60px 40px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* =========================
+   PAGINACIÓN
+========================= */
+.gestor-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.page-number {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #d1d5db;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #0052CC;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .page-number:hover {
+        background: #f0f7ff;
+        border-color: #0052CC;
+    }
+
+    .page-number.active {
+        background: #0052CC;
+        color: white;
+        border-color: #0052CC;
+    }
+
+.pagination-info {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .gestor-wrapper {
+        padding: 20px 10px;
+    }
+
+    .gestor-card {
+        padding: 20px;
+    }
+
+    .gestor-title {
+        font-size: 18px;
+    }
+
+    .gestor-table th,
+    .gestor-table td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .gestor-tab {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .search-input {
+        font-size: 13px;
+    }
+
+    .pagination-info {
+        font-size: 12px;
+    }
+}

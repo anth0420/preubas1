@@ -1,0 +1,42 @@
+﻿import React, { useEffect } from 'react';
+
+const CrearSolicitud = ({
+    title = 'Untitled',
+    description = 'No description provided.',
+    buttonText = 'OK',
+    onAction = () => {},
+}) => {
+    useEffect(() => {
+        console.log('Componente CrearSolicitud montado - página cargada');
+    }, []);
+
+    return (
+        <div style={{
+            border: '1px solid #e5e7eb',
+            borderRadius: 8,
+            padding: 16,
+            maxWidth: 520,
+            background: '#fff',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
+        }}>
+            <h3 style={{ margin: '0 0 8px 0', fontSize: 18 }}>{title}</h3>
+            <p style={{ margin: '0 0 12px 0', color: '#4b5563' }}>{description}</p>
+            <button
+                onClick={onAction}
+                style={{
+                    background: '#2563eb',
+                    color: '#fff',
+                    padding: '8px 12px',
+                    border: 'none',
+                    borderRadius: 6,
+                    cursor: 'pointer',
+                }}
+                type="button"
+            >
+                {buttonText}
+            </button>
+        </div>
+    );
+};
+
+export default CrearSolicitud;

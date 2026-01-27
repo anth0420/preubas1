@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="proyectopasantiari.client/proyectopasantiari.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="ProyectoPasantiaRI.Server/ProyectoPasantiaRI.Server.csproj" />
+</Solution>
